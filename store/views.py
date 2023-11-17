@@ -11,7 +11,7 @@ from django import forms
 
 def category(request, foo):
     # replacing the space in the category name from this 'cell phone' to cell-phone
-    foo = foo.replace('-', '')
+    # foo = foo.replace('-', '')
     try:
         category = Category.objects.get(name=foo)
         products = Product.objects.filter(category=category)
