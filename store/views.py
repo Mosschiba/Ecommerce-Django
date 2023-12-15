@@ -3,7 +3,7 @@ from .models import Product, Category
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -22,15 +22,14 @@ def category(request, foo):
         return redirect('home')
 
 
-@login_required
 def home(request):
     user = request.user
     products = Product.objects.all()
     return render(request, 'home.html', {'products': products, 'user': user})
 
 
-# biew product individualy
-@login_required
+# view product individualy
+
 def product(request, pk):
     product = Product.objects.get(id=pk)
     return render(request, 'product.html', {'product': product})
